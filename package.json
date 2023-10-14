@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.23.0",
     "@types/jest": "^29.5.5",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
