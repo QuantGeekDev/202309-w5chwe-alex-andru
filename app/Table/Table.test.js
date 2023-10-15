@@ -6,7 +6,7 @@ describe("Given a 'Table' instance", () => {
       const table = new Table(6, 6);
       const expectedCellIsAlive = false;
 
-      const cell = table.table[0][1];
+      const cell = table.data[0][1];
 
       expect(cell.isAlive).toBe(expectedCellIsAlive);
     });
