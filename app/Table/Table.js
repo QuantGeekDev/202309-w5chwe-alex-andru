@@ -5,20 +5,25 @@ class Table {
   xRowLength;
   yRowLength;
   constructor(height, width) {
-    this.xRowLength = height;
-    this.yRowLength = width;
+    this.yRowLength = height;
+    this.xRowLength = width;
+    this.generateRandomTable();
+    this.generateNeighborsCoordinates();
+  }
+
+  generateRandomTable() {
     const table = [];
-    for (let yRowIndex = 0; yRowIndex < height; yRowIndex++) {
+    for (let yRowIndex = 0; yRowIndex < this.yRowLength; yRowIndex++) {
       const newXRow = [];
-      for (let xRowIndex = 0; xRowIndex < width; xRowIndex++) {
-        newXRow.push(new Cell(false));
+      for (let xRowIndex = 0; xRowIndex < this.xRowLength; xRowIndex++) {
+        const randomIsAlive = Boolean(Math.round(Math.random()));
+        newXRow.push(new Cell(randomIsAlive));
       }
 
       table.push(newXRow);
     }
 
     this.data = table;
-    this.generateNeighborsCoordinates();
   }
 
   generateNeighborsCoordinates() {
@@ -103,7 +108,6 @@ class Table {
         }
 
         if (!cell.getStatus()) {
-          console.log(cellLiveNeighborsAmount);
           if (cellLiveNeighborsAmount === deadResurrectionRule) {
             cell.setStatus(true);
           }
