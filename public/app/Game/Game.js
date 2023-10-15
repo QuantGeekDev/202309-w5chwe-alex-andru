@@ -10,11 +10,11 @@ class Game {
   }
 
   nextGameSequence() {
-    this.renderer.clearWebTable();
+    this.renderer.clearViewFrame();
     this.table.resetCells();
     this.table.countAliveNeighbors();
     this.table.updateCells();
-    this.renderer.displayWebTable(this.table.data);
+    this.renderer.displayViewFrame(this.table.data);
   }
 }
 

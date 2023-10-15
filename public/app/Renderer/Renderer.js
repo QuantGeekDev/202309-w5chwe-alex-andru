@@ -1,11 +1,11 @@
 class Renderer {
-  renderTable;
+  viewFrame;
 
   constructor(data) {
-    this.generateTable(data);
+    this.generateViewFrame(data);
   }
 
-  generateTable(data) {
+  generateViewFrame(data) {
     const table = [];
     data.forEach((row) => {
       const rowValues = [];
@@ -20,37 +20,37 @@ class Renderer {
       });
       table.push(rowValues);
     });
-    this.renderTable = table;
+    this.viewFrame = table;
   }
 
-  printTable() {
-    this.renderTable.forEach((row) => {
+  printViewFrame() {
+    this.viewFrame.forEach((row) => {
       row.forEach((cell) => console.log(cell));
     });
   }
 
-  clearWebTable() {
+  clearViewFrame() {
     const gameTableBody = document.querySelector(".viewFrame");
     if (gameTableBody) {
       gameTableBody.innerHTML = "";
     }
   }
 
-  displayWebTable(data) {
-    this.generateTable(data);
-    const gameTable = document.querySelector(".viewFrame");
-    const webTableBody = document.createElement("tbody");
+  displayViewFrame(data) {
+    this.generateViewFrame(data);
+    const viewFrame = document.querySelector(".viewFrame");
+    const viewFrameBody = document.createElement("tbody");
 
-    this.renderTable.forEach((row) => {
+    this.viewFrame.forEach((row) => {
       const newRow = document.createElement("tr");
       row.forEach((renderCell) => {
         const newCell = document.createElement("td");
-        const cellContents = document.createTextNode(renderCell);
-        newCell.appendChild(cellContents);
+        const newCellContents = document.createTextNode(renderCell);
+        newCell.appendChild(newCellContents);
         newRow.appendChild(newCell);
       });
-      webTableBody.appendChild(newRow);
-      gameTable.appendChild(webTableBody);
+      viewFrameBody.appendChild(newRow);
+      viewFrame.appendChild(viewFrameBody);
     });
   }
 }
