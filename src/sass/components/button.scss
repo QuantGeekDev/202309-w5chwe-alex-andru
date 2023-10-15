@@ -1,0 +1,14 @@
+@use "../variables/colors";
+@use "../variables/fonts";
+
+.button {
+  background-color: colors.$secondary;
+  font: fonts.$main-font;
+  font-weight: 700;
+  padding: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: colors.$secondary-hover;
+  }
+}
