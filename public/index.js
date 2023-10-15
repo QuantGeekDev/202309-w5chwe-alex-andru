@@ -1,7 +1,10 @@
 import Table from "./app/Table/Table.js";
 import Game from "./app/Game/Game.js";
 
-const table = new Table(15, 15);
+const tableHeight = 15;
+const tableWidth = 15;
+
+const table = new Table(tableHeight, tableWidth);
 
 const game = new Game(table);
 
