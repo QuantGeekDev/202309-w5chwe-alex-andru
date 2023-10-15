@@ -1,5 +1,8 @@
 {
   "name": "202309-w5chwe-alex-andru",
+  "env": {
+    "NODE_ENV": "test"
+  },
   "version": "1.0.0",
   "description": "",
   "type": "module",
