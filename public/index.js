@@ -1,7 +1,7 @@
 import Table from "./app/Table/Table.js";
 import Game from "./app/Game/Game.js";
 
-const table = new Table(20, 20);
+const table = new Table(15, 15);
 
 const game = new Game(table);
 

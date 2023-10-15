@@ -30,7 +30,7 @@ class Renderer {
   }
 
   clearWebTable() {
-    const gameTableBody = document.querySelector(".game-table");
+    const gameTableBody = document.querySelector(".viewFrame");
     if (gameTableBody) {
       gameTableBody.innerHTML = "";
     }
@@ -38,7 +38,7 @@ class Renderer {
 
   displayWebTable(data) {
     this.generateTable(data);
-    const gameTable = document.querySelector(".game-table");
+    const gameTable = document.querySelector(".viewFrame");
     const webTableBody = document.createElement("tbody");
 
     this.renderTable.forEach((row) => {

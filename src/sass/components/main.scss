@@ -1,0 +1,9 @@
+@use "../variables/fonts";
+@use "../variables/colors";
+
+.main {
+  &__heading {
+    font-family: fonts.$title-font;
+    text-align: center;
+  }
+}
