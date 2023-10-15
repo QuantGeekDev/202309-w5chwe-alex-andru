@@ -15,7 +15,7 @@ class Renderer {
         }
 
         if (!cell.isAlive) {
-          rowValues.push("⬛");
+          rowValues.push("⬜");
         }
       });
       table.push(rowValues);
