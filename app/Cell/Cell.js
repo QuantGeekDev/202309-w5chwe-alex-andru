@@ -13,7 +13,6 @@ class Cell {
 
   setStatus(status) {
     this.isAlive = status;
-    return this;
   }
 
   getLiveNeighborsAmount() {
