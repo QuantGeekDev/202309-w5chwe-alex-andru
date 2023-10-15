@@ -50,6 +50,12 @@ class Table {
     }
   }
 
+  resetCells() {
+    this.data.forEach((row) => {
+      row.forEach((cell) => cell.resetLiveNeighborsAmount());
+    });
+  }
+
   getNeighborCoordinates(xIndex, yIndex) {
     const coordinates = {};
     const topIndex = yIndex - 1;
@@ -104,12 +110,16 @@ class Table {
             cellLiveNeighborsAmount > liveOverpopulationRule
           ) {
             cell.setStatus(false);
+          } else {
+            cell.setStatus(true);
           }
         }
 
         if (!cell.getStatus()) {
           if (cellLiveNeighborsAmount === deadResurrectionRule) {
             cell.setStatus(true);
+          } else {
+            cell.setStatus(false);
           }
         }
       });
