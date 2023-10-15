@@ -18,6 +18,7 @@ class Table {
     }
 
     this.data = table;
+    this.generateNeighborsCoordinates();
   }
 
   generateNeighborsCoordinates() {
@@ -27,7 +28,6 @@ class Table {
         cell.neighborCoordinates = neighborCoordinates;
       });
     });
-    return this;
   }
 
   getCellByCoordinates(xCoordinate, yCoordinate) {
@@ -88,11 +88,46 @@ class Table {
   updateCells() {
     this.data.forEach((row) => {
       row.forEach((cell) => {
-        cell.neighborCoordinates.forEach((neighbor) => {
-          if (neighbor.x === true) {
-            cell.liveNeighborsAmount++;
+        const cellLiveNeighborsAmount = cell.getLiveNeighborsAmount();
+        const liveUnderpopulationRule = 2;
+        const liveOverpopulationRule = 3;
+        const deadResurrectionRule = 3;
+
+        if (cell.getStatus()) {
+          if (
+            cellLiveNeighborsAmount < liveUnderpopulationRule ||
+            cellLiveNeighborsAmount > liveOverpopulationRule
+          ) {
+            cell.setStatus(false);
           }
-        });
+        }
+
+        if (!cell.getStatus()) {
+          console.log(cellLiveNeighborsAmount);
+          if (cellLiveNeighborsAmount === deadResurrectionRule) {
+            cell.setStatus(true);
+          }
+        }
+      });
+    });
+  }
+
+  countAliveNeighbors() {
+    this.data.forEach((row) => {
+      row.forEach((cell) => {
+        for (const direction in cell.neighborCoordinates) {
+          if (direction) {
+            const neighborXCoordinates = cell.neighborCoordinates[direction].x;
+            const neighborYCoordinates = cell.neighborCoordinates[direction].y;
+            const neighborCell = this.getCellByCoordinates(
+              neighborXCoordinates,
+              neighborYCoordinates,
+            );
+            if (neighborCell.getStatus()) {
+              cell.increaseLiveNeighborsAmount();
+            }
+          }
+        }
       });
     });
   }

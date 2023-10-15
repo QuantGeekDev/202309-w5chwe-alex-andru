@@ -1,5 +1,6 @@
 class Cell {
   isAlive;
+  neighborCoordinates;
   liveNeighborsAmount = 0;
 
   constructor(isAlive) {
@@ -13,6 +14,10 @@ class Cell {
   setStatus(status) {
     this.isAlive = status;
     return this;
+  }
+
+  getLiveNeighborsAmount() {
+    return this.liveNeighborsAmount;
   }
 
   increaseLiveNeighborsAmount() {
