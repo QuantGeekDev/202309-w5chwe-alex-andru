@@ -1,0 +1,12 @@
+/* We import the variables stylesheet*/
+@use "../variables/colors";
+@use "../variables/fonts";
+
+html {
+  font-family: fonts.$main-font, fonts.$title-font;
+  background-color: colors.$page-background;
+}
+
+body {
+  padding: 10px;
+}

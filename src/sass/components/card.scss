@@ -1,0 +1,12 @@
+@use "../variables/colors";
+.card {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: colors.$card-background;
+  padding: 10px;
+  border-radius: 25px;
+  height: auto;
+  width: auto;
+}

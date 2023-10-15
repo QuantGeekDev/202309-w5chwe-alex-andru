@@ -1,4 +1,5 @@
 import Renderer from "../Renderer/Renderer.js";
+
 class Game {
   table;
   renderer;
@@ -9,7 +10,6 @@ class Game {
   }
 
   nextGameSequence() {
-    console.log("Actioned!");
     this.renderer.clearWebTable();
     this.table.resetCells();
     this.table.countAliveNeighbors();

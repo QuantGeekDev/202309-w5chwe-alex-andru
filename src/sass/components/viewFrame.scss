@@ -1,0 +1,11 @@
+@use "../variables/colors";
+
+.viewFrame {
+  border-spacing: 1px;
+  border-collapse: collapse;
+}
+.viewFrame tr,
+.viewFrame tbody,
+.viewFrame td {
+  padding: 0;
+}
