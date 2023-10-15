@@ -9,6 +9,7 @@ class Game {
   }
 
   nextGameSequence() {
+    console.log("Actioned!");
     this.renderer.clearWebTable();
     this.table.resetCells();
     this.table.countAliveNeighbors();
