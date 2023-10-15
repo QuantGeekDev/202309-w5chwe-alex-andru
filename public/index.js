@@ -8,6 +8,7 @@ const game = new Game(table);
 const startButton = document.querySelector(".game__button");
 
 startButton.addEventListener("click", () => {
+  document.querySelector(".game__button").toggleAttribute("disabled");
   setInterval(() => {
     game.nextGameSequence();
   }, 500);
