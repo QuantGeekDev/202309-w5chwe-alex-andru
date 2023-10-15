@@ -1,5 +1,6 @@
-import Table from "./Table/Table.js";
-import Game from "./Game/Game.js";
+import Table from "./app/Table/Table.js";
+import Game from "./app/Game/Game.js";
+
 const table = new Table(20, 20);
 
 const game = new Game(table);

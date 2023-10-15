@@ -6,13 +6,15 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "app/index.js",
+  "main": "public/index.js",
   "scripts": {
     "test": "npx jest",
     "test:dev": "npx jest --watchAll",
     "start": "node .",
     "start:dev": "node --watch .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build-styles": "sass src/sass/styles.scss public/styles/styles.css",
+    "build-styles:dev": "sass --watch src/sass/styles.scss public/styles/styles.css"
   },
   "keywords": [],
   "author": "",
