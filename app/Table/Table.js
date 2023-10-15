@@ -20,14 +20,38 @@ class Table {
     this.data = table;
   }
 
+  generateNeighborsCoordinates() {
+    this.data.forEach((row, yIndex) => {
+      row.forEach((cell, xIndex) => {
+        const neighborCoordinates = this.getNeighborCoordinates(xIndex, yIndex);
+        cell.neighborCoordinates = neighborCoordinates;
+      });
+    });
+    return this;
+  }
+
   getCellByCoordinates(xCoordinate, yCoordinate) {
-    return this.data[yCoordinate][xCoordinate];
+    const minCoordinate = 0;
+    const maxHeight = this.yRowLength - 1;
+    const maxWidth = this.xRowLength - 1;
+    if (
+      xCoordinate >= minCoordinate &&
+      yCoordinate >= minCoordinate &&
+      xCoordinate <= maxWidth &&
+      yCoordinate <= maxHeight
+    ) {
+      const matchedCell = this.data[yCoordinate][xCoordinate];
+      return matchedCell;
+    }
   }
 
   getNeighborCoordinates(xIndex, yIndex) {
     const coordinates = {};
-    if (this.getCellByCoordinates(xIndex - 1, yIndex - 1)) {
-      coordinates.topLeft = { x: xIndex - 1, y: yIndex - 1 };
+    const topIndex = yIndex - 1;
+    const leftIndex = xIndex - 1;
+
+    if (this.getCellByCoordinates(leftIndex, topIndex)) {
+      coordinates.topLeft = { x: leftIndex, y: topIndex };
     }
 
     if (this.getCellByCoordinates(xIndex, yIndex - 1)) {
@@ -61,21 +85,17 @@ class Table {
     return coordinates;
   }
 
-  // FindAliveNeighbors() {
-  //   this.data.forEach((row, yIndex) => {
-  //     row.forEach((cell, xIndex) => {
-  //       const currentCell = this.data[yIndex][xIndex];
-
-  //       coordinates.forEach((cell) => {
-  //         if (cell.isAlive) {
-  //           currentCell.increaseLiveNeighborsAmount();
-  //           console.log(this.data[yIndex][xIndex].liveNeighborsAmount);
-  //         }
-  //       });
-  //       console.log(`${xIndex},${yIndex}: ${cell.isAlive}`);
-  //     });
-  //   });
-  // }
+  updateCells() {
+    this.data.forEach((row) => {
+      row.forEach((cell) => {
+        cell.neighborCoordinates.forEach((neighbor) => {
+          if (neighbor.x === true) {
+            cell.liveNeighborsAmount++;
+          }
+        });
+      });
+    });
+  }
 }
 
 export default Table;
